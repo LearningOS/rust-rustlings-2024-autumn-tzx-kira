@@ -13,5 +13,6 @@ fn main() {
 }
 
 fn current_favorite_color() -> String {
-    "blue"
+    //另外一种写法："blue".to_string()
+    String::from("blue")
 }

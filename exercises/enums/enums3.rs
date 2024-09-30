@@ -9,6 +9,12 @@
 
 enum Message {
     // TODO: implement the message variant types based on their usage below
+     // 消息变体定义  
+     ChangeColor(u8, u8, u8), // 更改颜色  
+     Echo(String),            // 输出字符串  
+     Move(Point),             // 移动到一个新的位置  
+     Quit,                    // 退出
+
 }
 
 struct Point {
@@ -43,6 +49,13 @@ impl State {
         // variants
         // Remember: When passing a tuple as a function argument, you'll need
         // extra parentheses: fn function((t, u, p, l, e))
+        // 使用match表达式处理不同的消息变体  
+        match message {  
+            Message::ChangeColor(r, g, b) => self.change_color((r, g, b)),  
+            Message::Echo(s) => self.echo(s),  
+            Message::Move(p) => self.move_position(p),  
+            Message::Quit => self.quit(),  
+        }  
     }
 }
 
@@ -58,6 +71,7 @@ mod tests {
             color: (0, 0, 0),
             message: "hello world".to_string(),
         };
+        // 发送消息并处理 
         state.process(Message::ChangeColor(255, 0, 255));
         state.process(Message::Echo(String::from("hello world")));
         state.process(Message::Move(Point { x: 10, y: 15 }));

@@ -29,12 +29,15 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    // 返回类型应该是一个布尔值，表示是否是国际包裹
+    fn is_international(&self) -> bool {
         // Something goes here...
+        return self.sender_country != self.recipient_country;
     }
-
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    // 计算并返回包裹的总费用，cent是美分
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        return self.weight_in_grams * cents_per_gram;
     }
 }
 

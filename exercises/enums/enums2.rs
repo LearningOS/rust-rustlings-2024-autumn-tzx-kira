@@ -8,6 +8,10 @@
 #[derive(Debug)]
 enum Message {
     // TODO: define the different variants used below
+    Move { x: i32, y: i32 }, // 具有命名字段
+    Echo(String), // 包括单个.String
+    ChangeColor(i32, i32, i32), //包括3个值
+    Quit // 根本没有与之关联的数据
 }
 
 impl Message {
