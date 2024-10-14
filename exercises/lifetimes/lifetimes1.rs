@@ -8,9 +8,9 @@
 // Execute `rustlings hint lifetimes1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
-fn longest(x: &str, y: &str) -> &str {
+// 没搞懂的一题
+// 本题中，由于缺少生命周期参数，编译器不知道max_num函数返回的引用生命周期硕士什么，所以会报错
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {
