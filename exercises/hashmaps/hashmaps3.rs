@@ -14,7 +14,9 @@
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
+
+// 在Rust中，entry()函数是HashMap和BTreeMap这两种集合类型提供的一个非常有用的方法。这个方法允许你获取一个指向键值对的引用，如果键不存在，则插入这个键并返回一个新的值。
 
 use std::collections::HashMap;
 
@@ -39,6 +41,15 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+        // 使用entry方法检查球队是否已经在HashMap中。如果不在，就使用or_insert方法插入一个新的Team实例，其得分和失分都初始化为0。
+        let team_1_entry = scores.entry(team_1_name.clone()).or_insert(Team{goals_scored: 0, goals_conceded: 0});
+        // 根据比赛结果更新该球队的得分和失分
+        team_1_entry.goals_scored += team_1_score;  
+        team_1_entry.goals_conceded += team_2_score;
+        // team_2.
+        let team_2_entry = scores.entry(team_2_name.clone()).or_insert(Team { goals_scored: 0, goals_conceded: 0 });  
+        team_2_entry.goals_scored += team_2_score;  
+        team_2_entry.goals_conceded += team_1_score;
     }
     scores
 }

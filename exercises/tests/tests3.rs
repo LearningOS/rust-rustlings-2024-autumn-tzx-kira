@@ -7,9 +7,10 @@
 // Execute `rustlings hint tests3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 pub fn is_even(num: i32) -> bool {
+    // 如果num除以2的余数为0，则num为偶数，返回true；否则返回false
     num % 2 == 0
 }
 
@@ -17,13 +18,15 @@ pub fn is_even(num: i32) -> bool {
 mod tests {
     use super::*;
 
+    // 定义一个测试函数，用于测试当输入为偶数时，is_even函数是否返回true
     #[test]
     fn is_true_when_even() {
-        assert!();
+        assert!(is_even(4),"4 should be even");
     }
 
+    // 定义一个测试函数，用于测试当输入为奇数时，is_even函数是否返回false
     #[test]
     fn is_false_when_odd() {
-        assert!();
+        assert!(!is_even(5), "5 should not be odd");
     }
 }
