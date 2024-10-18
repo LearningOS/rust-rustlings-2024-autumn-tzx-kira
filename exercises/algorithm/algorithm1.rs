@@ -7,8 +7,9 @@
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
 use std::vec::*;
+use std::cmp::Ordering;
 
-#[derive(Debug)]
+#[derive(Debug,PartialEq, Eq)]
 struct Node<T> {
     val: T,
     next: Option<NonNull<Node<T>>>,
@@ -70,12 +71,50 @@ impl<T> LinkedList<T> {
         }
     }
 	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
+    where  
+        T: Ord + Clone,
 	{
-		//TODO
+        //TODO
+        
+        // 创建一个新的链表来存储合并后的结果  
+        let mut merged_list = LinkedList::new();  
+        let mut a_current = list_a.start;  
+        let mut b_current = list_b.start;  
+        let mut num=0;
+    // 迭代两个链表，直到其中一个为空  
+    while let (Some(a_ptr), Some(b_ptr)) = (a_current.clone(), b_current.clone()) {  
+        let mut a_val = unsafe { (*a_ptr.as_ptr()).val.clone() };  
+        let mut b_val = unsafe { (*b_ptr.as_ptr()).val.clone() };  
+  
+        // 将较小的值添加到合并后的链表中  
+        if a_val <= b_val {  
+            merged_list.add(a_val);  
+            a_current = unsafe { (*a_ptr.as_ptr()).next.clone() };  
+        } else {  
+            merged_list.add(b_val);  
+            b_current = unsafe { (*b_ptr.as_ptr()).next.clone() };  
+        }  
+        num+=1;
+    }  
+  
+    // 如果 list_a 还有剩余元素，将它们添加到合并后的链表中  
+    while let Some(a_ptr) = a_current {  
+        merged_list.add(unsafe { (*a_ptr.as_ptr()).val.clone() });  
+        a_current = unsafe { (*a_ptr.as_ptr()).next.clone() };  
+    }  
+  
+    // 如果 list_b 还有剩余元素，将它们添加到合并后的链表中  
+    while let Some(b_ptr) = b_current {  
+        merged_list.add(unsafe { (*b_ptr.as_ptr()).val.clone() });  
+        b_current = unsafe { (*b_ptr.as_ptr()).next.clone() };  
+    }  
+  
+    // 返回合并后的链表，但注意我们不需要设置 length，因为它会在 add 方法中自动更新  
+
 		Self {
-            length: 0,
-            start: None,
-            end: None,
+            length: num,
+            start: merged_list.start,
+            end: merged_list.end,
         }
 	}
 }
