@@ -6,14 +6,26 @@
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-struct Wrapper {
-    value: u32,
+
+
+// 定义一个结构体 Wrapper，它包含一个 u32 类型的值
+// struct Wrapper {
+//     value: u32,
+// }
+// 将现有的 Wrapper 结构体修改为使用泛型，以便它能够存储任何类型的值，而不仅仅是 u32。
+struct Wrapper<T> {
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+// impl Wrapper {
+//     pub fn new(value: u32) -> Self {
+//         Wrapper { value }
+//     }
+// }
+
+impl<T> Wrapper<T> {
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
 }

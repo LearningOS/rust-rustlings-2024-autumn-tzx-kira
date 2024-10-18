@@ -3,7 +3,11 @@
 // Execute `rustlings hint iterators4` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// I AM  DONE
+
+// 循环的缩略写法以及使用fold进行累乘
+// (1..=num)代表闭区间
+// (1..num)代表开区间
 
 pub fn factorial(num: u64) -> u64 {
     // Complete this function to return the factorial of num
@@ -15,6 +19,7 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+    (1..=num).fold(1,|updateNums,x| updateNums*x)
 }
 
 #[cfg(test)]

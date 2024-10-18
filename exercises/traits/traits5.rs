@@ -7,7 +7,7 @@
 // Execute `rustlings hint traits5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
 
 pub trait SomeTrait {
     fn some_function(&self) -> bool {
@@ -30,7 +30,8 @@ impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}
 
 // YOU MAY ONLY CHANGE THE NEXT LINE
-fn some_func(item: ??) -> bool {
+// 使用+来放行实现了多种共享行为的类型
+fn some_func<T:SomeTrait+OtherTrait>(item: T) -> bool {
     item.some_function() && item.other_function()
 }
 

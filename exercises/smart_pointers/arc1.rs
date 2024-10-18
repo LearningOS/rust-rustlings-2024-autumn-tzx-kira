@@ -21,7 +21,9 @@
 //
 // Execute `rustlings hint arc1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
+// I AM DONE
+// 使用Arc创建共享变量
 
 #![forbid(unused_imports)] // Do not change this, (or the next) line.
 use std::sync::Arc;

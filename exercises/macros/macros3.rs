@@ -5,8 +5,10 @@
 // Execute `rustlings hint macros3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
+
+// 用于在模块或crate（包）级别声明你想要从另一个crate中导入宏。
+#[macro_use]
 mod macros {
     macro_rules! my_macro {
         () => {

@@ -34,7 +34,8 @@
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// I AM DONE
+// 配置本地环境
 
 fn main() {}
 

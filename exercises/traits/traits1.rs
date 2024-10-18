@@ -7,7 +7,8 @@
 // Execute `rustlings hint traits1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
+//为某一种类型实现(impl)共享行为(抽象库)
 
 trait AppendBar {
     fn append_bar(self) -> Self;
